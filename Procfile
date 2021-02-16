@@ -1,1 +1,1 @@
-web: gunicorn pj_db.wsgi
+web: gunicorn test_project.wsgi
