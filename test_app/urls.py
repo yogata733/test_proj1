@@ -1,5 +1,6 @@
-from django.urls import path, include
+from django.urls import path
+from .views import IndexView
 
 urlpatterns = [
-    path('', ),
+    path('', IndexView.as_view()),
 ]
