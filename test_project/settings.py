@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sslserver',
 ]
 
 MIDDLEWARE = [
@@ -132,5 +133,10 @@ LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/login/"
 # 暗号化されたhttpsを使うようにする
+#   プロキシ設定
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#   http URL を https にリダイレクトする
 SECURE_SSL_REDIRECT = True
+#   Cookieの設定
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
