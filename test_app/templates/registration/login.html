@@ -2,4 +2,8 @@
 {% block main %}
 <h2>ログイン</h2>
 {% include "_form.html" with submit_label="ログイン" %}
+<p></p>
+<p><a href="{% url 'password_reset' %}">パスワードを忘れた場合</a></p>
+<p><a href="{% url 'signup' %}">サインアップ</a></p>
+
 {% endblock %}

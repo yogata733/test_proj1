@@ -128,6 +128,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # 開発用にコンソールでメールをシミュレーション
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# メールに記載するURL
+FRONTEND_URL = "https://localhost:8000"
 # ログイン周りのURL
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/"
@@ -140,3 +142,5 @@ SECURE_SSL_REDIRECT = True
 #   Cookieの設定
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+# 自作のユーザーモデルをプロジェクトのユーザーモデルとして指定
+AUTH_USER_MODEL = 'test_app.User'
