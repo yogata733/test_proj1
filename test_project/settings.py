@@ -37,7 +37,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'test_app',
+    'testapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -143,4 +143,4 @@ SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 # 自作のユーザーモデルをプロジェクトのユーザーモデルとして指定
-AUTH_USER_MODEL = 'test_app.User'
+AUTH_USER_MODEL = 'testapp.User'
