@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block main %}
-<h2>ログイン</h2>
+<h3>Welcome to <b>test-project</b></h3>
+<br><br>
+<p>test-project にログインする</p>
 {% include "_form.html" with submit_label="ログイン" %}
-<br>
+<br><br>
 <p><a href="{% url 'password_reset' %}">パスワードを忘れた場合</a></p>
-<p><a href="{% url 'signup' %}">サインアップ</a></p>
+<p><a href="{% url 'signup' %}">新規登録</a></p>
 
 {% endblock %}
