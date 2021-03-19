@@ -6,7 +6,8 @@ from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-
+# ユーザ作成時に Permission を付与するために必要
+from django.contrib.auth.models import Permission
 # ユーザーモデルにアクセスする時にはfrom .models import Userなどではなく、必ずget_user_modelで取得する。
 # 開発中にAUTH_USER_MODELが切り替わったときなどにエラーになるため。
 User = get_user_model()
@@ -54,6 +55,14 @@ def activate_user(uidb64, token):
         return False
 
     if default_token_generator.check_token(user, token):
+        # パーミッションオブジェクトを取得
+        # permission_view = Permission.objects.get(codename='view_user')
+        permission_change = Permission.objects.get(
+            codename='change_user')
+        # userモデルにパーミッションを付与
+        # user.user_permissions.add(permission_view)
+        user.user_permissions.add(permission_change)
+
         user.is_active = True
         user.save()
         return True

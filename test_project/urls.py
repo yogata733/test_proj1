@@ -21,6 +21,9 @@ from django.views.generic import TemplateView
 
 from testapp import views
 
+from testapp.admin import mypage_site
+
+
 # 実はページを表示するだけならこのように1行で書くことが出来ます。
 index_view = TemplateView.as_view(template_name="registration/index.html")
 
@@ -32,4 +35,6 @@ urlpatterns = [
     path("signup/", views.SignUpView.as_view(), name="signup"),
     path('activate/<uidb64>/<token>/',
          views.ActivateView.as_view(), name='activate'),
+
+    path('mypage/', mypage_site.urls),
 ]
