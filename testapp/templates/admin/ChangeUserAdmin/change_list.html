@@ -1,0 +1,37 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{# <!-- タイトルを変更 --> #}
+{% block title %}
+アカウント情報確認・編集
+{% endblock %}
+
+{# <!-- ヘッダのタイトルとリンクを変更 --> #}
+{% block branding %}
+<h1 id=index><a href="{% url 'index' %}">test-project</a></h1>
+{% endblock %}
+
+{# <!-- "ようこそ"を非表示 --> #}
+{% block welcome-msg %}
+    <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+{% endblock %}
+
+{# <!-- コンテンツタイトルを非表示 --> #}
+{% block content_title %}
+{% endblock %}
+
+{# <!-- 管理サイト内パスを非表示 --> #}
+{% block breadcrumbs %}
+{% endblock %}
+
+{# <!-- 「サイトを表示」リンクを非表示 --> #}
+{% block userlinks %}
+    {% if user.has_usable_password %}
+        <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> /
+    {% endif %}
+    <a href="{% url 'admin:logout' %}">{% translate 'Log out' %}</a>
+{% endblock %}
+
+{# <!-- コンテンツを非表示 --> #}
+{% block content %}
+{% endblock %}
