@@ -49,6 +49,7 @@ class ChangeUserAdmin(UserAdmin):
         (None, {'fields': ('user_id', 'username')}),
         ('個人情報', {'fields': ('email',)}),
     )
+    readonly_fields = ('user_id',)
     # Userモデル一覧画面を表示しない (changelist_view()で使われるカスタムンテンプレートの絶対パスを変更)
     change_list_template = 'admin/ChangeUserAdmin/change_list.html'
 

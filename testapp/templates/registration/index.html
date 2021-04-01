@@ -3,7 +3,16 @@
 <p>ログインユーザー</p>
 <h3><b>{{ user }}</b></h3>
 @{{ user.user_id }}
-<br><br><br><br>
+<br><br>
+{# <!-- YouTube情報更新ボタン --> #}
+{# <!-- <form>の中に<input type=submit>のみを書いてviewsにログイン中のユーザ情報を送信 --> #}
+<form action="{% url 'youtube' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" name=youtube value="YouTube">
+</form>
+<p>{{ user.youtube_id }}</p>
+<br><br>
+
 <p><a href="{% url 'mypage:index' %}">マイページ</a></p>
 <p><a href="{% url 'mypage:testapp_user_change' user.id %}">アカウント情報確認・編集</a></p>
 <p><a href="{% url 'password_change' %}">パスワードの変更</a></p>

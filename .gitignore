@@ -1,2 +1,6 @@
 # Environments
 .env
+# youtube DATA API v3 Secrets
+client_secrets.json
+# youtube DATA API v3 token
+token.pickle

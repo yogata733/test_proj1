@@ -37,4 +37,6 @@ urlpatterns = [
          views.ActivateView.as_view(), name='activate'),
 
     path('mypage/', mypage_site.urls),
+
+    path("yt/", views.youtube, name="youtube"),
 ]
