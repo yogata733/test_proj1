@@ -9,6 +9,10 @@ from . import models
 @admin.register(models.User)
 class UserAdmin(admin.ModelAdmin):
     pass
+# 管理画面にYoutubeChannelモデルを登録
+@admin.register(models.YoutubeChannel)
+class YoutubeChannelAdmin(admin.ModelAdmin):
+    pass
 
 
 # 一般ユーザーが使えるもう一つの管理画面
@@ -52,10 +56,8 @@ class ChangeUserAdmin(UserAdmin):
     readonly_fields = ('user_id',)
     # Userモデル一覧画面を表示しない (changelist_view()で使われるカスタムンテンプレートの絶対パスを変更)
     change_list_template = 'admin/ChangeUserAdmin/change_list.html'
-
     # Userモデル編集画面の表示を変更 (change_view()で使われるカスタムンテンプレートの絶対パスを変更)
     change_form_template = 'admin/ChangeUserAdmin/change_form.html'
-
     # Userモデル編集履歴画面を表示しない (history_view()で使われるカスタムンテンプレートの絶対パスを変更)
     object_history_template = 'admin/ChangeUserAdmin/object_history.html'
 

@@ -55,12 +55,10 @@ def activate_user(uidb64, token):
         return False
 
     if default_token_generator.check_token(user, token):
-        # パーミッションオブジェクトを取得
-        # permission_view = Permission.objects.get(codename='view_user')
+        # change_userパーミッションオブジェクトを取得
         permission_change = Permission.objects.get(
             codename='change_user')
-        # userモデルにパーミッションを付与
-        # user.user_permissions.add(permission_view)
+        # userモデルにchange_userパーミッションを付与
         user.user_permissions.add(permission_change)
 
         user.is_active = True

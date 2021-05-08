@@ -24,7 +24,7 @@ from testapp import views
 from testapp.admin import mypage_site
 
 
-# 実はページを表示するだけならこのように1行で書くことが出来ます。
+# 実はページを表示するだけならこのように1行で書くことが出来る。
 index_view = TemplateView.as_view(template_name="registration/index.html")
 
 urlpatterns = [
@@ -38,5 +38,6 @@ urlpatterns = [
 
     path('mypage/', mypage_site.urls),
 
-    path("yt/", views.youtube, name="youtube"),
+    path("yt_update_button/", views.yt_update_button, name="yt_update_button"),
+    path("yt_delete_button/", views.yt_delete_button, name="yt_delete_button"),
 ]

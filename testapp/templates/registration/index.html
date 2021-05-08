@@ -4,14 +4,38 @@
 <h3><b>{{ user }}</b></h3>
 @{{ user.user_id }}
 <br><br>
+
 {# <!-- YouTube情報更新ボタン --> #}
 {# <!-- <form>の中に<input type=submit>のみを書いてviewsにログイン中のユーザ情報を送信 --> #}
-<form action="{% url 'youtube' %}" method="post">
+<form action="{% url 'yt_update_button' %}" method="post">
     {% csrf_token %}
-    <input type="submit" name=youtube value="YouTube">
+    <input type="submit" name=yt_update_button value="YouTube">
 </form>
-<p>{{ user.youtube_id }}</p>
+{# <!-- YouTubeトークン削除ボタン --> #}
+<form action="{% url 'yt_delete_button' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" name=yt_delete_button value="連携解除">
+</form>
+<br>
+
+
+{# <!-- 自分のYouTubeチャンネル一覧 --> #}
+<p>~ My Youtube Channels ~</p>
+{% for yt_channel in user.yt_channels.all %}
+<p>{{ yt_channel }}</p>
+{% endfor %}
+<p>登録チャンネル数 : {{ user.yt_subscriptions.all|length }}</p>
 <br><br>
+
+
+{% comment "<!-- 登録しているYouTubeチャンネル一覧 -->" %}
+<p>~ My Youtube Subscriptions ~</p>
+{% for yt_subscription in user.yt_subscriptions.all %}
+<p>{{ yt_subscription }}</p>
+{% endfor %}
+<br><br>
+{% endcomment %}
+
 
 <p><a href="{% url 'mypage:index' %}">マイページ</a></p>
 <p><a href="{% url 'mypage:testapp_user_change' user.id %}">アカウント情報確認・編集</a></p>
